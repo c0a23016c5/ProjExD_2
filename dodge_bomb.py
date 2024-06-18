@@ -60,7 +60,11 @@ def main():
             kk_rct.move_ip(-sum_mv[0], -sum_mv[1])
         screen.blit(kk_img, kk_rct)
         bb_rct.move_ip(vx, vy)
-        
+        yoko, tate = check_bound(bb_rct)
+        if not yoko:  # 横方向にはみ出たら
+            vx *= -1
+        if not tate:  # 縦方向にはみ出たら
+            vy *= -1
         screen.blit(bb_img, bb_rct)
         pg.display.update()
         tmr += 1
